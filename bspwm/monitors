@@ -1,0 +1,2 @@
+MAIN_MONITOR=$(xrandr -q | grep -oP '^\S+(?= [disconnected|connected])' | head -n 1 | tail -n 1)
+SECONDARY_MONITOR=$(xrandr -q | grep -oP '^\S+(?= [disconnected|connected])' | head -n 2 | tail -n 1)

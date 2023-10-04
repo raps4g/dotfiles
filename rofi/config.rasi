@@ -1,0 +1,33 @@
+configuration {
+	font: "mono 11";
+    location: 0;
+    anchor:   center;
+	hover-select: false;
+	me-select-entry: "";
+    me-accept-entry: [ MousePrimary, MouseSecondary, MouseDPrimary ];
+    timeout {
+      action: "kb-cancel";
+      delay:  0;
+      }
+      filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+      }
+    kb-remove-to-eol: "";
+    kb-accept-entry: "Control+m,Return,KP_Enter";
+    kb-row-up: "Control+k,Up";
+    kb-row-down: "Control+j,Down";
+}
+
+@theme "~/.config/rofi/theme.rasi"
+
+listview {
+    lines: 6;
+	columns: 1;
+}
+
+window {
+	width: 30%;
+}
+
+/**
