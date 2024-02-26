@@ -43,12 +43,12 @@ function win_dimensions() {
 }
 
 if  [[ "$window_class" = "firefox" ]]; then
-    if [[ "$window_title" =~ Private ]]
-	then
-        desktop=$(get_monitor_desktop 5 0)
-        echo desktop="$desktop"
-        echo follow=on
-	elif [[ "$window_title" =~ Picture-in-Picture ]]; then
+#    if [[ "$window_title" =~ Private ]]
+#	then
+#        desktop=$(get_monitor_desktop 5 0)
+#        echo desktop="$desktop"
+#        echo follow=on
+	if [[ "$window_title" =~ Picture-in-Picture ]]; then
         win_dimensions
         echo state=floating
         echo sticky=on
@@ -66,7 +66,7 @@ elif  [[ "$window_class" = "vlc" ]]; then
     desktop=$(get_monitor_desktop 4 0)
     echo desktop="$desktop" 
     echo follow=on
-elif  [[ "$window_class" = "Chromium-browser" ]]; then
+elif  [[ "$window_class" = "Chromium-browser" || "$window_class" = "Brave-browser" ]]; then
     source $HOME/.config/bspwm/working
     if [[ $WORKING == 'no' ]]; then
         $HOME/scripts/work_desktops.sh add
