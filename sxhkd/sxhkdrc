@@ -144,11 +144,11 @@ Print + {_,shift, shift+alt}
     $HOME/scripts/screenshot.sh {selection,full,delay}
 
 super + shift + {1-9}
-	bspc node -d '^{1-9}' --follow
-super + shift + alt + {1-9}
-	bspc node -d '^{1-9}'
+	bspc node -d $(bspc query -D -m | sed -n {1-9}p) --follow
 super + {1-9}
-    bspc desktop -f '^{1-9}'
+    bspc desktop -f $(bspc query -D -m | sed -n {1-9}p)
+super + shift + alt + {1-9}
+    bspc node -d $(bspc query -D -m | sed -n {1-9}p)
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
@@ -189,3 +189,9 @@ super + d
 
 super + {_, shift} c
     nmcli con { up, down } FortiVPNWork
+
+super + {minus,equal}
+    $HOME/scripts/work_desktops.sh {add,remove}
+
+XF86AudioPlay
+    playerctl play-pause
