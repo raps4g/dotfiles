@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 volume_step=1
 max_volume=125
