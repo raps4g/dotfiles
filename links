@@ -1,5 +1,10 @@
 ## GENERAL ##
+autorandr/preswitch=.config/autorandr/preswitch
+autorandr/postswitch.d/postswitch=.config/autorandr/postswitch.d/postswitch
 autorandr/docked/postswitch=.config/autorandr/docked/postswitch
+autorandr/docked_tv/postswitch=.config/autorandr/docked_tv/postswitch
+autorandr/mirror/postswitch=.config/autorandr/mirror/postswitch
+autorandr/mirror/preswitch=.config/autorandr/mirror/preswitch
 autorandr/undocked/postswitch=.config/autorandr/undocked/postswitch
 autorandr/switch_actions.sh=.config/autorandr/switch_actions.sh
 bash/bash_aliases=.bash_aliases
