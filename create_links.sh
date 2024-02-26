@@ -5,7 +5,7 @@ while read line; do
     source=$dotfiles/$(echo $line | sed -nE 's/(.*)\=.*/\1/p')
     dest=$HOME/$(echo $line | sed -nE 's/.*\=(.*)/\1/p')
     dest_dir=$(dirname $dest)
-    if [ -f $source ] ; then
+    if [[ -f $source || -d $source ]] ; then
         mkdir -pv $dest_dir
         if [[ ( -d $dest || -f $dest ) && ! -L $dest ]]; then
             mv -v $dest $dest.old
