@@ -1,5 +1,4 @@
 #!/bin/sh
-source $HOME/.config/bspwm/monitors
 
 window_id=$1
 window_class=$2
