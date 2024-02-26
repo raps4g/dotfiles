@@ -9,7 +9,7 @@ echo $(date +'%Y-%m-%d %H:%M:%S') last profile $AUTORANDR_LAST_PROFILE >> $HOME/
 
 if [[ $AUTORANDR_LAST_PROFILE == 'undocked' || $AUTORANDR_LAST_PROFILE == 'mirror' ]]; then
     bspc wm -r
-    bspc monitor $SECONDARY_MONITOR -d $DESKTOPS 
+#    bspc monitor $SECONDARY_MONITOR -d $DESKTOPS
     restore_nodes $SECONDARY_MONITOR
 fi
 echo $(date +'%Y-%m-%d %H:%M:%S') docked/postswitch >> $HOME/.config/autorandr/autorandr.log
