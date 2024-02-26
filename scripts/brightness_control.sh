@@ -29,5 +29,16 @@ case $1 in
     brightnessctl set $brightness_step%- 
     show_brightness_notif
     ;;
+    
+    onoff)
+    current=$(get_brightness)
+    echo $current
+    if [[ $current == 0 ]]; then
+        brightnessctl -r
+    else
+        brightnessctl -s
+        brightnessctl set 0 
+    fi
+    ;;
 esac
 

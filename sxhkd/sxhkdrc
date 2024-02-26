@@ -122,6 +122,9 @@ super + {Left,Down,Up,Right}
 XF86MonBrightness{Up,Down}
     $HOME/scripts/brightness_control.sh {up,down}
 
+super + b
+    $HOME/scripts/brightness_control.sh onoff
+
 XF86Audio{Raise,Lower}Volume
     $HOME/scripts/volume_control.sh {up,down}
 
@@ -167,6 +170,8 @@ super + alt + s
 super + {Tab, backslash, p}
 	bspc {node, desktop, monitor} -f last
 
+super + shift + {Tab, backslash, p}
+	bspc {node, desktop, monitor} -f prev
 # Focus the next/prev node in the same desktop
 alt + {shift,_} + Tab
     bspc node -f {prev,next}.local
@@ -174,3 +179,6 @@ alt + {shift,_} + Tab
 super + o
     python3 $HOME/scripts/rofi_sinks.py
 
+# vim
+super + v
+    alacritty -e vim ~/
