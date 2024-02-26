@@ -179,6 +179,10 @@ alt + {shift,_} + Tab
 super + o
     python3 $HOME/scripts/rofi_sinks.py
 
-# vim
+# nvim
 super + v
-    alacritty -e vim ~/
+    alacritty -e nvim ~/
+
+# Nvim into dotfiles directory
+super + d
+    alacritty -e nvim ~/git/dotfiles/
