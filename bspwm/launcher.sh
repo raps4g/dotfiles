@@ -28,9 +28,9 @@ xsetroot -cursor_name left_ptr
 xinput set-prop "MSFT0001:01 06CB:CE2D Touchpad" "libinput Natural Scrolling Enabled" 1
 xinput set-prop "MSFT0001:01 06CB:CE2D Touchpad" "libinput Tapping Enabled" 1
 picom --legacy-backends -b --config $HOME/.config/picom/picom.conf &
-nm-applet &
-xfce4-power-manager &
 sxhkd &
+
+source $HOME/.config/bspwm/onetime_launch.sh
 
 #if [[ $(autorandr --detected) != $(autorandr --current) ]]; then
 #    autorandr --change
