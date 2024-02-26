@@ -1,0 +1,11 @@
+#!/bin/bash
+source $HOME/.config/autorandr/switch_actions.sh
+
+if pgrep -x "bspwm" >/dev/null
+then
+    true
+    autorandr --current > $HOME/.config/autorandr/lastprofile
+#    betterlockscreen -u $HOME/.local/share/backgrounds/geomwhite.png
+fi
+
+echo $(date +'%Y-%m-%d %H:%M:%S') global >> ~/git/dotfiles/autorandr/log

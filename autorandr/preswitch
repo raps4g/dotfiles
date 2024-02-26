@@ -1,0 +1,3 @@
+#!/bin/bash
+
+autorandr --current > $HOME/.config/autorandr/lastprofile

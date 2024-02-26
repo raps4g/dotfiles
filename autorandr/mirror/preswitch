@@ -1,0 +1,14 @@
+#!/bin/bash
+source $HOME/.config/autorandr/switch_actions.sh
+
+if pgrep -x "bspwm" >/dev/null
+then
+    if [[ $(cat $HOME/.config/autorandr/lastprofile | grep -E ^docked) ]]; then
+        echo moving nodes
+        backup_nodes $SECONDARY_MONITOR
+        move_nodes $SECONDARY_MONITOR $MAIN_MONITOR
+        remove_desktops $SECONDARY_MONITOR
+    fi
+fi
+
+echo $(date +'%Y-%m-%d %H:%M:%S') pre mirror >> ~/git/dotfiles/autorandr/log

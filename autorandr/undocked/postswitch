@@ -9,5 +9,7 @@ then
         move_nodes $SECONDARY_MONITOR $MAIN_MONITOR
         remove_desktops $SECONDARY_MONITOR
     fi
+    bspc wm -r
+    nitrogen --force-setter=xinerama --head=0 --set-scaled $HOME/.local/share/backgrounds/geomwhite.png
 fi
-bspc wm -r
+echo $(date +'%Y-%m-%d %H:%M:%S') undocked >> ~/git/dotfiles/autorandr/log

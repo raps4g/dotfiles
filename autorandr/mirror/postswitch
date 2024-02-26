@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if pgrep -x "bspwm" >/dev/null
+then
+    nitrogen --force-setter=xinerama --head=0 --set-scaled $HOME/.local/share/backgrounds/white.jpg
+fi
+
+echo $(date +'%Y-%m-%d %H:%M:%S') postmirror >> ~/git/dotfiles/autorandr/log
