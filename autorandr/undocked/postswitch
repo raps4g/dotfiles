@@ -5,7 +5,7 @@ then
     exit
 fi
 
-echo $(date +'%Y-%m-%d %H:%M:%S') last profile $AUTORANDR_LAST_PROFILE >> ~/git/dotfiles/autorandr/log
+echo $(date +'%Y-%m-%d %H:%M:%S') last profile $AUTORANDR_LAST_PROFILE >> $HOME/.config/autorandr/autorandr.log
 
 if [[ $AUTORANDR_LAST_PROFILE == 'docked' ]]; then
     backup_nodes $SECONDARY_MONITOR
@@ -13,4 +13,4 @@ if [[ $AUTORANDR_LAST_PROFILE == 'docked' ]]; then
     remove_desktops $SECONDARY_MONITOR
     bspc wm -r
 fi
-echo $(date +'%Y-%m-%d %H:%M:%S') undocked/postswitch >> ~/git/dotfiles/autorandr/log
+echo $(date +'%Y-%m-%d %H:%M:%S') undocked/postswitch >> $HOME/.config/autorandr/autorandr.log

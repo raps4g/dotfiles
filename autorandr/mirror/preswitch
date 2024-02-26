@@ -11,4 +11,4 @@ then
     fi
 fi
 
-echo $(date +'%Y-%m-%d %H:%M:%S') pre mirror >> ~/git/dotfiles/autorandr/log
+echo $(date +'%Y-%m-%d %H:%M:%S') pre mirror >> $HOME/.config/autorandr/autorandr.log

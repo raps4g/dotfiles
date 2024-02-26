@@ -7,4 +7,4 @@ then
 fi
 
 #echo $AUTORANDR_CURRENT_PROFILE > $HOME/.config/autorandr/lastprofile
-echo $(date +'%Y-%m-%d %H:%M:%S') preswitch >> ~/git/dotfiles/autorandr/log
+echo $(date +'%Y-%m-%d %H:%M:%S') preswitch >> $HOME/.config/autorandr/autorandr.log

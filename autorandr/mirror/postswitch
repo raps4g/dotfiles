@@ -10,4 +10,4 @@ if [[ $AUTORANDR_LAST_PROFILE == 'docked' ]]; then
     remove_desktops $SECONDARY_MONITOR
     bspc wm -r
 fi
-echo $(date +'%Y-%m-%d %H:%M:%S') mirror/postswitch >> ~/git/dotfiles/autorandr/log
+echo $(date +'%Y-%m-%d %H:%M:%S') mirror/postswitch >> $HOME/.config/autorandr/autorandr.log

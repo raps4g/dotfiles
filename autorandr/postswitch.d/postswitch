@@ -7,5 +7,5 @@ then
 fi
 
 echo $AUTORANDR_CURRENT_PROFILE > $HOME/.config/autorandr/lastprofile
-echo $(date +'%Y-%m-%d %H:%M:%S') postswitch >> ~/git/dotfiles/autorandr/log
-echo  >> ~/git/dotfiles/autorandr/log
+echo $(date +'%Y-%m-%d %H:%M:%S') postswitch >> $HOME/.config/autorandr/autorandr.log
+echo  >> $HOME/.config/autorandr/autorandr.log
