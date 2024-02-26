@@ -19,9 +19,9 @@ for sink in sinks_dict:
             ports.append(port['name'])
             if sink['name'] == current_sink and \
                     sink['active_port'] == port['name']:
-                options.append('•'+port['name'].replace("[Out] ", ""))
+                options.append('•'+port['description'].replace("[Out] ", ""))
             else:
-                options.append(port['name'].replace("[Out] ", ""))
+                options.append(port['description'].replace("[Out] ", ""))
 
 echo = Popen(["echo", '|'.join(options)], stdout=PIPE)
 rofi = Popen(["rofi", "-no-fixed-num-lines", "-dmenu", "-i", "-sep", "|", "-p",

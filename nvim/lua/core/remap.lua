@@ -25,8 +25,8 @@ vim.keymap.set("n", "<leader>k", "O<Esc>j")
 vim.keymap.set("n", "<leader>j", "o<Esc>k")
 
 -- Copy to clipboard
-vim.keymap.set("n", "<leader>y", "\"+y") 
-vim.keymap.set("n", "<leader>Y", "\"+Y") 
+vim.keymap.set("n", "<leader>y", "\"+y")
+vim.keymap.set("n", "<leader>Y", "\"+Y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 
 -- Paste from clipboard
@@ -35,3 +35,4 @@ vim.keymap.set("v", "<leader>y", "\"+y")
 --vim.keymap.set("v", "<leader>p", "\"+p")
 
 vim.keymap.set("n", "<leader>w", ":set wrap!<cr>")
+vim.keymap.set("i", "<C-o>", "<Esc>A;<cr>")

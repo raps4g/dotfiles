@@ -36,7 +36,7 @@
     min_icon_size = 20
     max_icon_size = 20
     text_icon_padding=0
-    icon_position = left
+    icon_position = off
     alignment = center
     vertical_alignment = center
     #offset = 12x67

@@ -136,7 +136,7 @@ alt + h
 
 # switch output
 super + o
-    python3 $HOME/scripts/rofi_sinks.py
+    python3 $HOME/scripts/rofi_output.py
 
 
 #####################
