@@ -8,4 +8,3 @@ My environmnet
 - alacritty
 - neovim
 
-![Screenshot](screenshot.png)
