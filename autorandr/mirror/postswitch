@@ -1,8 +1,13 @@
 #!/bin/bash
-
-if pgrep -x "bspwm" >/dev/null
+source $HOME/.config/autorandr/switch_actions.sh
+if ! pgrep -x "bspwm" >/dev/null
 then
-    nitrogen --force-setter=xinerama --head=0 --set-scaled $HOME/.local/share/backgrounds/white.jpg
+    exit
 fi
-
-echo $(date +'%Y-%m-%d %H:%M:%S') postmirror >> ~/git/dotfiles/autorandr/log
+if [[ $AUTORANDR_LAST_PROFILE == 'docked' ]]; then
+    backup_nodes $SECONDARY_MONITOR
+    move_nodes $SECONDARY_MONITOR $MAIN_MONITOR
+    remove_desktops $SECONDARY_MONITOR
+    bspc wm -r
+fi
+echo $(date +'%Y-%m-%d %H:%M:%S') mirror/postswitch >> ~/git/dotfiles/autorandr/log

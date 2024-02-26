@@ -1,2 +1,12 @@
 MAIN_MONITOR=$(xrandr -q | grep -oP '^\S+(?= [disconnected|connected])' | head -n 1 | tail -n 1)
 SECONDARY_MONITOR=$(xrandr -q | grep -oP '^\S+(?= [disconnected|connected])' | head -n 2 | tail -n 1)
+if xrandr -q | grep $SECONDARY_MONITOR | grep disconnected ; then
+    DUAL_MONITOR=no
+else
+    DUAL_MONITOR=yes
+fi
+if command -v autorandr &> /dev/null ; then
+    AUTORANDR_EXISTS=yes
+else
+   AUTORANDR_EXISTS=no
+fi

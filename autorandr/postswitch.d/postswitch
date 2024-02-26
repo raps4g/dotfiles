@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 source $HOME/.config/autorandr/switch_actions.sh
 
-if pgrep -x "bspwm" >/dev/null
+if ! pgrep -x "bspwm" >/dev/null
 then
-    true
-    autorandr --current > $HOME/.config/autorandr/lastprofile
-#    betterlockscreen -u $HOME/.local/share/backgrounds/geomwhite.png
+   exit 
 fi
 
-echo $(date +'%Y-%m-%d %H:%M:%S') global >> ~/git/dotfiles/autorandr/log
+echo $AUTORANDR_CURRENT_PROFILE > $HOME/.config/autorandr/lastprofile
+echo $(date +'%Y-%m-%d %H:%M:%S') postswitch >> ~/git/dotfiles/autorandr/log
+echo  >> ~/git/dotfiles/autorandr/log

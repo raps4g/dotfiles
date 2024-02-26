@@ -1,13 +1,15 @@
 #!/bin/bash
 source $HOME/.config/autorandr/switch_actions.sh
-
-if pgrep -x "bspwm" >/dev/null
+if ! pgrep -x "bspwm" >/dev/null
 then
-    bspc monitor $SECONDARY_MONITOR -d $DESKTOPS 
-    restore_nodes $SECONDARY_MONITOR
-    bspc wm -r
-    nitrogen --force-setter=xinerama --head=0 --set-scaled $HOME/.local/share/backgrounds/geomwhite.png
-    nitrogen --force-setter=xinerama --head=1 --set-scaled $HOME/.local/share/backgrounds/geomwhite.png
+    exit
 fi
 
-echo $(date +'%Y-%m-%d %H:%M:%S') docked >> ~/git/dotfiles/autorandr/log
+echo $(date +'%Y-%m-%d %H:%M:%S') last profile $AUTORANDR_LAST_PROFILE >> ~/git/dotfiles/autorandr/log
+
+if [[ $AUTORANDR_LAST_PROFILE == 'undocked' ]]; then
+    bspc wm -r
+    bspc monitor $SECONDARY_MONITOR -d $DESKTOPS 
+    restore_nodes $SECONDARY_MONITOR
+fi
+echo $(date +'%Y-%m-%d %H:%M:%S') docked_tv/postswitch >> ~/git/dotfiles/autorandr/log

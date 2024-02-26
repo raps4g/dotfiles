@@ -2,6 +2,7 @@
 # Import monitors and desktops
 source $HOME/.config/bspwm/monitors
 source $HOME/.config/bspwm/desktops
+AUTORANDR_LAST_PROFILE=$(cat $HOME/.config/autorandr/lastprofile)
 n_desktops=$(echo $DESKTOPS | wc -w)
 
 # Moves nodes between monitors to its corresponding desktop

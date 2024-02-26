@@ -1,3 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
+source $HOME/.config/autorandr/switch_actions.sh
 
-autorandr --current > $HOME/.config/autorandr/lastprofile
+if ! pgrep -x "bspwm" >/dev/null
+then
+   exit 
+fi
+
+#echo $AUTORANDR_CURRENT_PROFILE > $HOME/.config/autorandr/lastprofile
+echo $(date +'%Y-%m-%d %H:%M:%S') preswitch >> ~/git/dotfiles/autorandr/log
