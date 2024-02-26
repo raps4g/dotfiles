@@ -10,9 +10,14 @@ if ! [[ $(ps aux | grep "postswitch" | grep -v "grep") ]]; then
     sxhkd &
 fi
 
-nitrogen --force-setter=xinerama --head=0 --set-scaled $HOME/.local/share/backgrounds/white.jpg
-if [ $(autorandr --current) == 'docked' ]; then 
-    nitrogen --force-setter=xinerama --head=1 --set-scaled $HOME/.local/share/backgrounds/white.jpg
+
+if [[ $(autorandr --detected) != $(autorandr --current) ]]; then
+    autorandr --change
+fi
+
+if [[ $(autorandr --current) == 'undocked' ]]; then 
+    nitrogen --force-setter=xinerama --head=0 --set-scaled $HOME/.local/share/backgrounds/geomwhite.png
 fi
 
 $HOME/.config/polybar/polybar_launcher.sh
+betterlockscreen -u $HOME/.local/share/backgrounds/geomwhite.png
