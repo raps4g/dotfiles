@@ -7,4 +7,4 @@ My environmnet
 - betterlockscreen
 - alacritty
 - neovim
-
+![Screenshot](screenshot.png)
