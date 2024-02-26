@@ -1,0 +1,123 @@
+* {
+    background: #de282a36;
+    background-alt: #44475a;
+    foreground: #f8f8f2;
+    foreground-alt: #dfdfdf;
+    primary: #ffb52a;
+    secondary: #eceff4;
+    alert: #bd2c40;
+    
+    dracula0: #282a36; 
+    dracula1: #282a36; 
+    dracula2: #44475a;
+    dracula3: #f8f8f2;
+    dracula4: #6272a4;
+    dracula5: #8be9fd;
+    dracula6: #50fa7b;
+    dracula7: #ffb86c;
+    dracula8: #ff79c6;
+    dracula9: #bd93f9;
+    dracula10: #ff5555;
+    dracula11: #f1fa8c;
+
+    foreground:  @dracula9;
+    backlight:   #ccffeedd;
+    background-color:  transparent;
+    
+    highlight:     underline bold #eceff4;
+
+    transparent: rgba(46,52,64,0);
+}
+
+window {
+    transparency: "screenshot";
+    padding: 1px;
+    border:  0px;
+    border-radius: 6px;
+
+    background-color: @transparent;
+    spacing: 0;
+    children:  [mainbox];
+    orientation: horizontal;
+}
+
+mainbox {
+    spacing: 0;
+    children: [ inputbar, message, listview ];
+}
+
+message {
+    color: @dracula0;
+    padding: 5;
+    border-color: @foreground;
+    border:  0px 2px 2px 2px;
+    background-color: @dracula7;
+}
+
+inputbar {
+    color: @dracula8;
+    padding: 11px;
+    background-color: @dracula1;
+    border: 2px;
+    border-radius:  6px 6px 0px 0px;
+    border-color: @dracula9;
+    children: [ "prompt", "textbox-prompt-colon", "entry" ];
+}
+
+textbox-prompt-colon {
+    margin:     0px 0.3000em 0.0000em 0.0000em ;
+    expand:     false;
+    str:        ":";
+    text-color: inherit;
+}
+entry, prompt, case-indicator {
+    text-font: inherit;
+    text-color:inherit;
+}
+
+prompt {
+    margin: 0px 0em 0em 0em ;
+}
+
+listview {
+    padding: 8px;
+    border-radius: 0px 0px 6px 6px;
+    border-color: @dracula9;
+    border: 0px 2px 2px 2px;
+    background-color: @dracula1;
+    dynamic: false;
+}
+
+element {
+    padding: 3px;
+    vertical-align: 0.5;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #ff0000;
+    text-color: @dracula3;
+}
+
+element selected.normal {
+	background-color: @dracula2;
+	text-color: @dracula3;
+}
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+button {
+    padding: 6px;
+    color: @foreground;
+    horizontal-align: 0.5;
+
+    border: 2px 0px 2px 2px;
+    border-radius: 4px 0px 0px 4px;
+    border-color: @foreground;
+}
+
+button selected normal {
+    border: 2px 0px 2px 2px;
+    border-color: @foreground;
+}

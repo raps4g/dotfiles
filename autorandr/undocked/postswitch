@@ -1,0 +1,13 @@
+#!/bin/bash
+
+source $HOME/.config/autorandr/switch_actions.sh
+
+if pgrep -x "bspwm" >/dev/null
+then
+    if [[ $(bspc query -M --names | grep $SECONDARY_MONITOR) ]]; then
+        backup_nodes $SECONDARY_MONITOR
+        move_nodes $SECONDARY_MONITOR $MAIN_MONITOR
+        remove_desktops $SECONDARY_MONITOR
+    fi
+fi
+bspc wm -r

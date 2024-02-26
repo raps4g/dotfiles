@@ -1,0 +1,68 @@
+[global]
+    #font = "Font Awesome 5 Free Solid 13"
+    font = "Ubuntu Light 10"
+    markup = full
+    format = "<b>%s</b> %b"
+    #format = "<b>%s</b> <span font='Ubuntu Light 13'>%b</span>"
+    sort = yes
+    indicate_hidden = yes
+    bounce_freq = 0
+    show_age_threshold = 60
+    word_wrap = yes
+    ignore_newline = false
+    origin = bottom-center
+    transparency = 3
+    idle_threshold = 120
+    monitor = 0
+    follow = mouse
+    sticky_history = yes
+    line_height = 0
+    separator_height = 2
+    padding = 10
+    horizontal_padding = 1
+    separator_color = "#3c4549"
+    separator_width = 1
+    startup_notification = false
+    corner_radius = 10
+    frame_color = "#FFFFFF"
+    frame_width = 0
+    width = 280
+    progress_bar_max_width = 250
+    progress_bar_min_width = 250
+    progress_bar_height = 10
+    progress_bar_frame_width = 1
+    progress_bar_corner_radius = 5
+    scale = 0
+    min_icon_size = 20
+    max_icon_size = 20
+    text_icon_padding=0
+    icon_position = left
+    alignment = center
+    vertical_alignment = center
+    #offset = 12x67
+
+[shortcuts]
+    close = ctrl+space
+    close_all = ctrl+shift+space
+    history = ctrl+grave
+    context = ctrl+shift+period
+
+[urgency_low]
+    background = "#0F0F0F"
+    foreground = "#ffffff"
+    highlight = "#bd93f9"
+    timeout = 5
+
+[urgency_normal]
+    background = "#0F0F0F"
+    foreground = "#FFFFFF"
+    highlight = "#FFFFFF"
+    timeout = 20
+
+[urgency_critical]
+    background = "#0F0F0F"
+    foreground = "#696969"
+    frame_color = "#696969"
+    highlight = "#696969"
+    timeout = 0
+

@@ -1,0 +1,28 @@
+configuration {
+	font: "mono 11";
+    location: 3;
+    anchor: west;
+	xoffset: -12; 
+	yoffset: 63; 
+    timeout {
+      action: "kb-cancel";
+      delay:  0;
+    }
+    filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+    }
+}
+
+@theme "~/.config/rofi/theme.rasi"
+
+listview {
+	lines: 6;
+	columns: 1;
+}
+
+window {
+	width: 10%;
+}
+
+/**
