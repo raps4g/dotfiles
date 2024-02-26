@@ -1,13 +1,22 @@
-bspc monitor $MAIN_MONITOR -d $DESKTOPS 
-nitrogen --force-setter=xinerama --head=0 --set-scaled $HOME/.local/share/backgrounds/geomwhite.png
-killall polybar
-MONITOR=$MAIN_MONITOR polybar main -c $HOME/.config/polybar/config.ini &
+source $HOME/.config/bspwm/monitors
+source $HOME/.config/bspwm/desktops
+source $HOME/.config/bspwm/desktops_work
+source $HOME/.config/bspwm/working
+export DESKTOPS MAIN_MONITOR SECONDARY_MONITOR WORK_DESKTOPS
 
+if [[ $WORKING == 'yes' ]]; then
+    DESKTOPS=$DESKTOPS\ $WORK_DESKTOPS    
+fi
+killall polybar
 if ! xrandr -q | grep $SECONDARY_MONITOR | grep disconnected ; then
     bspc monitor $SECONDARY_MONITOR -d $DESKTOPS
     nitrogen --force-setter=xinerama --head=1 --set-scaled $HOME/.local/share/backgrounds/geomwhite.png
     MONITOR=$SECONDARY_MONITOR polybar main -c $HOME/.config/polybar/config.ini &
 fi
+bspc monitor $MAIN_MONITOR -d $DESKTOPS 
+nitrogen --force-setter=xinerama --head=0 --set-scaled $HOME/.local/share/backgrounds/geomwhite.png
+MONITOR=$MAIN_MONITOR polybar main -c $HOME/.config/polybar/config.ini &
+
 
 if [[ $(ps aux | grep "postswitch" | grep -v "grep") ]]; then
     exit

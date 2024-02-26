@@ -1,1 +1,2 @@
-DESKTOPS='1 2 media firefox folder shell db chrome code private'
+#DESKTOPS='1 2 media firefox folder shell db chrome code private'
+DESKTOPS='1 2 3 4 5'

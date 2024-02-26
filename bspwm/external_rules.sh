@@ -1,4 +1,5 @@
 #!/bin/sh
+source $HOME/.config/bspwm/monitors
 
 window_id=$1
 window_class=$2
@@ -41,11 +42,10 @@ function win_dimensions() {
         rec_y=$(( $win_height - $rec_height - 50))
 }
 
-if  [[ "$window_class" = "firefox" ]]
-then
+if  [[ "$window_class" = "firefox" ]]; then
     if [[ "$window_title" =~ Private ]]
 	then
-        desktop=$(get_monitor_desktop private 0)
+        desktop=$(get_monitor_desktop 5 0)
         echo desktop="$desktop"
         echo follow=on
 	elif [[ "$window_title" =~ Picture-in-Picture ]]; then
@@ -53,37 +53,51 @@ then
         echo state=floating
         echo sticky=on
         echo rectangle=${rec_width}x${rec_height}+${rec_x}+${rec_y} 
-    else
-        desktop=$(get_monitor_desktop firefox 0)
-        echo desktop="$desktop"
-        echo follow=on
+#    else
+#        desktop=$(get_monitor_desktop firefox 0)
+#        echo desktop="$desktop"
+#        echo follow=on
     fi
 elif  [[ "$window_class" = "Nemo" || "$window_class" = "Thunar" ]]; then
-    desktop=$(get_monitor_desktop folder 0)
+    desktop=$(get_monitor_desktop 4 0)
     echo desktop="$desktop" 
     echo follow=on
 elif  [[ "$window_class" = "vlc" ]]; then
-    desktop=$(get_monitor_desktop media 0)
+    desktop=$(get_monitor_desktop 4 0)
     echo desktop="$desktop" 
     echo follow=on
 elif  [[ "$window_class" = "Chromium-browser" ]]; then
+    source $HOME/.config/bspwm/working
+    if [[ $WORKING == 'no' ]]; then
+        $HOME/scripts/work_desktops.sh add
+    fi
     desktop=$(get_monitor_desktop chrome 1)
     echo desktop="$desktop" 
     echo follow=on
 elif  [[ "$window_class" = "SWT" || "$window_class" = \
     "Org.gnome.Epiphany.WebApp_bcdcf0baf1263b5d9aca9" ]]; then
+    source $HOME/.config/bspwm/working
+    if [[ $WORKING == 'no' ]]; then
+        $HOME/scripts/work_desktops.sh add
+    fi
     desktop=$(get_monitor_desktop code 1)
     echo desktop="$desktop" 
     echo follow=on
 elif  [[ "$window_class" = "oracle-ide-osgi-boot-OracleIdeLauncher" || \
     "$window_class" = "DBeaver" || "$window_title" = "Oracle SQL Developer" ]]; then
+    source $HOME/.config/bspwm/working
+    if [[ $WORKING == 'no' ]]; then
+        $HOME/scripts/work_desktops.sh add
+    fi
     desktop=$(get_monitor_desktop db 1)
     echo desktop="$desktop" 
     echo follow=on
 fi
 
 #echo $window_id >> ~/.config/bspwm/log 
+#echo $desktop >> ~/.config/bspwm/log 
 #echo $window_class >> ~/.config/bspwm/log 
 #echo $window_instance >> ~/.config/bspwm/log
 #echo $window_title >> ~/.config/bspwm/log
 #echo   >> ~/.config/bspwm/log
+

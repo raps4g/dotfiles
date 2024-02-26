@@ -11,6 +11,7 @@ bash/bash_aliases=.bash_aliases
 bash/bash_prompt=.bash_prompt
 bspwm/monitors=.config/bspwm/monitors
 bspwm/desktops=.config/bspwm/desktops
+bspwm/desktops_work=.config/bspwm/desktops_work
 bspwm/launcher.sh=.config/bspwm/launcher.sh
 bspwm/external_rules.sh=.config/bspwm/external_rules.sh
 nvim/init.lua=.config/nvim/init.lua

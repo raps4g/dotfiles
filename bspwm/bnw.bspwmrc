@@ -1,7 +1,4 @@
 #! /bin/sh
-source $HOME/.config/bspwm/monitors
-source $HOME/.config/bspwm/desktops
-export DESKTOPS MAIN_MONITOR SECONDARY_MONITOR
 
 bspc config border_width        0
 bspc config window_gap          10
