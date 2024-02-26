@@ -54,9 +54,17 @@ then
         echo state=floating
         echo sticky=on
         echo rectangle=${rec_width}x${rec_height}+${rec_x}+${rec_y} 
+    else
+        desktop=$(get_monitor_desktop firefox 0)
+        echo desktop="$desktop"
+        echo follow=on
     fi
 elif  [[ "$window_class" = "Nemo" || "$window_class" = "Thunar" ]]; then
     desktop=$(get_monitor_desktop folder 0)
+    echo desktop="$desktop" 
+    echo follow=on
+elif  [[ "$window_class" = "vlc" ]]; then
+    desktop=$(get_monitor_desktop media 0)
     echo desktop="$desktop" 
     echo follow=on
 elif  [[ "$window_class" = "Chromium-browser" ]]; then
