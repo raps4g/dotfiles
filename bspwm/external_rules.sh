@@ -77,7 +77,7 @@ elif  [[ "$window_class" = "SWT" || "$window_class" = \
     echo desktop="$desktop" 
     echo follow=on
 elif  [[ "$window_class" = "oracle-ide-osgi-boot-OracleIdeLauncher" || \
-    "$window_class" = "DBeaver" ]]; then
+    "$window_class" = "DBeaver" || "$window_title" = "Oracle SQL Developer" ]]; then
     desktop=$(get_monitor_desktop db 1)
     echo desktop="$desktop" 
     echo follow=on
