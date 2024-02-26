@@ -52,9 +52,9 @@ colors:
   nordic  white: '#ffffff'
 font:
   normal: 
-    family: monospace
+    family: Liga SFMono Nerd Font
     style: Regular
-  size: 11
+  size: 12
 window:
   dimensions:
     columns: 120
