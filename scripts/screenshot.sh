@@ -3,7 +3,7 @@
 case $1 in 
     selection)
         scrot -q 100 -s --line mode=edge \
-            $HOME/Pictures/Screenshots/screenshot_%Y_%m_%d_%H_%M_%S.png \
+            $HOME/Screenshots/screenshot_%Y_%m_%d_%H_%M_%S.png \
             -e 'xclip -selection clipboard -t image/png -i $f'
         ;;
 
