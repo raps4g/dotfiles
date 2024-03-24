@@ -164,8 +164,8 @@ super + {_, shift} c
 #####################
 
 # terminal 
-super + Return
-    alacritty
+super + {_, shift} Return
+    {alacritty,$HOME/scripts/alacritty_cwd.sh}
 
 # program launcher
 super + space
