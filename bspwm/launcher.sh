@@ -28,7 +28,7 @@ xsetroot -cursor_name left_ptr
 xinput set-prop "MSFT0001:01 06CB:CE2D Touchpad" "libinput Natural Scrolling Enabled" 1
 xinput set-prop "MSFT0001:01 06CB:CE2D Touchpad" "libinput Tapping Enabled" 1
 picom --legacy-backends -b --config $HOME/.config/picom/picom.conf &
-sxhkd &
+sxhkd -c $HOME/.config/sxhkd/dvorak &
 
 source $HOME/.config/bspwm/onetime_launch.sh
 

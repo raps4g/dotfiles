@@ -1,0 +1,174 @@
+#####################
+##      bspwm      ##
+#####################
+
+# Restart sxhkd
+super + {_, shift} + BackSpace 
+    killall sxhkd & sxhkd -c $HOME/.config/sxhkd/{dvorak,qwerty}
+
+# Restart or quit bspwm
+super + alt + {q,r}
+    bspc {quit,wm -r}
+
+# Lock
+super + alt + x
+    betterlockscreen -l
+
+# Lock and suspend
+super + alt + s
+    betterlockscreen -l & systemctl suspend
+
+#####################
+##      Nodes      ##
+#####################
+
+# close and kill
+super + {_,shift + }w
+    bspc node -{c,k}
+
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+super + ctrl + {m,l,s,p}
+	bspc node -g {marked,locked,sticky,private}
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}.local
+
+# send node to nth desktop
+super + shift + {1-9}
+	bspc node -d $(bspc query -D -m | sed -n {1-9}p) --follow
+
+# send node to nth desktop without focusing
+super + shift + alt + {1-9}
+    bspc node -d $(bspc query -D -m | sed -n {1-9}p)
+
+# Focus the next/prev node in the same desktop
+alt + {shift,_} + Tab
+    bspc node -f {prev,next}.local
+
+# Move node to prev/next desktop
+super + shift + bracket{left,right}
+    bspc node -d {prev,next}.local --follow
+
+# Move node to left/right monitor
+super + alt + bracket{left,right}
+    bspc node -m {west,east} --follow
+
+#####################
+##    Desktops     ##
+#####################
+
+# alternate between the tiled and monocle layout
+super + m
+    bspc desktop -l next
+
+# focus nth desktop
+super + {1-9}
+    bspc desktop -f $(bspc query -D -m | sed -n {1-9}p)
+
+# focus the next/previous desktop in the current monitor
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# create work desktops
+super + {minus,equal}
+    $HOME/scripts/work_desktops.sh {add,remove}
+
+#####################
+##    Monitors     ##
+#####################
+
+# Alternate monitors
+super + backslash
+    bspc monitor -f last
+
+
+#####################
+##      Media      ##
+#####################
+
+# Volume control
+XF86Audio{Raise,Lower}Volume
+    $HOME/scripts/volume_control.sh {up,down}
+
+XF86AudioMute
+    $HOME/scripts/volume_control.sh mute
+
+alt + {k,j,m}
+    $HOME/scripts/volume_control.sh {up,down,mute}
+
+# Mic control
+$HOME/scripts/mic_control.sh mute
+
+shift + alt + {k,j,m}
+    $HOME/scripts/mic_control.sh {up,down,mute}
+
+# Media control
+XF86AudioPlay
+    playerctl play-pause
+
+alt + p
+    playerctl play-pause
+
+XF86AudioNext
+    playerctl next
+
+alt + l
+    playerctl next
+
+XF86AudioPrev
+    playerctl previous
+
+alt + h 
+    playerctl previous
+
+# switch output
+super + o
+    python3 $HOME/scripts/rofi_output.py
+
+
+#####################
+##    Utilities    ##
+#####################
+
+# control brightness
+XF86MonBrightness{Up,Down}
+    $HOME/scripts/brightness_control.sh {up,down}
+
+# 0 brightness on laptop
+super + b
+    $HOME/scripts/brightness_control.sh onoff
+
+# screenshots
+Print + {_,shift, shift+alt}
+    $HOME/scripts/screenshot.sh {selection,full,delay}
+
+# connect to vpn
+super + {_, shift} c
+    nmcli con { up, down } FortiVPNWork
+
+#####################
+##    Programs     ##
+#####################
+
+# terminal 
+super + Return
+    alacritty
+
+# program launcher
+super + space
+    rofi -show drun
+super + r
+    rofi -show run

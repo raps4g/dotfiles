@@ -20,7 +20,8 @@ rofi/config.rasi=.config/rofi/config.rasi
 rofi/powermenu.rasi=.config/rofi/powermenu.rasi
 rofi/runmenu.rasi=.config/rofi/runmenu.rasi
 scripts=scripts
-sxhkd/sxhkdrc=.config/sxhkd/sxhkdrc
+sxhkd/dvorak=.config/sxhkd/dvorak
+sxhkd/qwerty=.config/sxhkd/qwerty
 
 ## DRACULA ##
 #bspwm/dracula.bspwmrc=.config/bspwm/bspwmrc
