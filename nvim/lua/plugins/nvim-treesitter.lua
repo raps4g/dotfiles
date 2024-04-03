@@ -33,6 +33,7 @@ return {
           "gitignore",
           "python",
           "c",
+          "java",
           "cpp"
         },
         incremental_selection = {
