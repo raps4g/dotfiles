@@ -23,20 +23,10 @@ scripts=scripts
 sxhkd/dvorak=.config/sxhkd/dvorak
 sxhkd/qwerty=.config/sxhkd/qwerty
 
-## DRACULA ##
-#bspwm/dracula.bspwmrc=.config/bspwm/bspwmrc
-#alacritty/dracula.yml=.config/alacritty/alacritty.yml
-#dunst/dunstrc=.config/dunst/dunstrc
-#gtk-3.0/settings.ini=.config/gtk-3.0/settings.ini
-#picom/picom.conf=.config/picom/picom.conf
-#polybar/dracula.ini=.config/polybar/config.ini
-#rofi/dracula.rasi=.config/rofi/dracula.rasi
-
-## BnW ##
-bspwm/bnw.bspwmrc=.config/bspwm/bspwmrc
-alacritty/bnw.yml=.config/alacritty/alacritty.yml
-dunst/bnw.dunstrc=.config/dunst/dunstrc
-#gtk-3.0/settings.ini=.config/gtk-3.0/settings.ini
-picom/bnw.conf=.config/picom/picom.conf
-polybar/bnw.ini=.config/polybar/config.ini
-rofi/bnw.rasi=.config/rofi/theme.rasi
+# Theme specific
+picom/catppuccin.conf=.config/picom/picom.conf
+bspwm/catppuccin.bspwmrc=.config/bspwm/bspwmrc
+alacritty/catppuccin.toml=.config/alacritty/alacritty.toml
+dunst/catppuccin.dunstrc=.config/dunst/dunstrc
+polybar/catppuccin.ini=.config/polybar/config.ini
+rofi/catppuccin.rasi=.config/rofi/theme.rasi

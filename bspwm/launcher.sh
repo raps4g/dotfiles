@@ -10,11 +10,11 @@ fi
 killall polybar
 if ! xrandr -q | grep $SECONDARY_MONITOR | grep disconnected ; then
     bspc monitor $SECONDARY_MONITOR -d $DESKTOPS
-    nitrogen --force-setter=xinerama --head=1 --set-scaled $HOME/.local/share/backgrounds/wallpaper1.jpg
+    nitrogen --force-setter=xinerama --head=1 --set-scaled $HOME/.local/share/backgrounds/catppuccinsky.jpeg
     MONITOR=$SECONDARY_MONITOR polybar main -c $HOME/.config/polybar/config.ini &
 fi
 bspc monitor $MAIN_MONITOR -d $DESKTOPS 
-nitrogen --force-setter=xinerama --head=0 --set-scaled $HOME/.local/share/backgrounds/wallpaper1.jpg
+nitrogen --force-setter=xinerama --head=0 --set-scaled $HOME/.local/share/backgrounds/catppuccinsky.jpeg
 MONITOR=$MAIN_MONITOR polybar main -c $HOME/.config/polybar/config.ini &
 
 
@@ -36,4 +36,4 @@ source $HOME/.config/bspwm/onetime_launch.sh
 #    autorandr --change
 #fi
 
-betterlockscreen -u $HOME/.local/share/backgrounds/wallpaper1.jpg
+betterlockscreen -u $HOME/.local/share/backgrounds/catppuccinsky.jpeg

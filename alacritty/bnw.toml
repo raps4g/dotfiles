@@ -1,0 +1,76 @@
+[colors]
+
+[colors.bright]
+black = "#F1FAA3"
+blue = "#d6acff"
+cyan = "#a4ffff"
+green = "#69ff94"
+magenta = "#ff92df"
+red = "#ff6e6e"
+yellow = "#ffffa5"
+
+[colors.cursor]
+cursor = "CellForeground"
+text = "CellBackground"
+
+[colors.footer_bar]
+background = "#0F0F0F"
+foreground = "#FFFFFF"
+
+[colors.hints.end]
+background = "#0F0F0F"
+foreground = "#F1FAA3"
+
+[colors.hints.start]
+background = "#F1FAA3"
+foreground = "#0F0F0F"
+
+[colors.line_indicator]
+background = "None"
+foreground = "None"
+
+[colors.normal]
+black = "#0F0F0F"
+blue = "#B8C0E0"
+cyan = "#F1FAA3"
+green = "#A6DA95"
+magenta = "#F5BDE6"
+red = "#ED8796"
+white = "#FFFFFF"
+yellow = "#F1FAA3"
+
+[colors.primary]
+background = "#0F0F0F"
+bright_foreground = "#ffffff"
+foreground = "#FFFFFF"
+
+[colors.search.focused_match]
+background = "#EED49F"
+foreground = "#FFFFFF"
+
+[colors.search.matches]
+background = "#A6DA95"
+foreground = "#FFFFFF"
+
+[colors.selection]
+background = "#FFFFFF"
+text = "CellForeground"
+
+[colors.vi_mode_cursor]
+cursor = "CellForeground"
+text = "CellBackground"
+
+[font]
+size = 12
+
+[font.normal]
+family = "Liga SFMono Nerd Font"
+style = "Regular"
+
+[window.dimensions]
+columns = 120
+lines = 40
+
+[window.padding]
+x = 10
+y = 10
