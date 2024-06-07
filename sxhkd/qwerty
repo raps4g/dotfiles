@@ -3,8 +3,11 @@
 #####################
 
 # Restart sxhkd
-super + {_, shift} + BackSpace 
-    killall sxhkd & sxhkd -c $HOME/.config/sxhkd/{dvorak,qwerty}
+super + BackSpace
+    setxkbmap latam & killall sxhkd & sxhkd -c $HOME/.config/sxhkd/dvorak
+
+super + shift + BackSpace
+    setxkbmap us_lat & killall sxhkd & sxhkd -c $HOME/.config/sxhkd/qwerty
 
 # Restart or quit bspwm
 super + alt + {q,r}
