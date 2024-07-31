@@ -26,8 +26,8 @@ super + alt + s
 #####################
 
 # close and kill
-super + w
-    bspc node -c
+super + {_,shift + }w
+    bspc node -{c,k}
 
 # set the window state
 super + shift + {m,w,v,z}
@@ -50,11 +50,11 @@ super + {_,shift + }{d, h, t, n}
 	bspc node -{f,s} {west,south,north,east}.local
 
 # send node to nth desktop
-super + shift + F{1-9}
+super + shift + {1-9}
 	bspc node -d $(bspc query -D -m | sed -n {1-9}p) --follow
 
 # send node to nth desktop without focusing
-super + shift + alt + F{1-9}
+super + shift + alt + {1-9}
     bspc node -d $(bspc query -D -m | sed -n {1-9}p)
 
 # Focus the next/prev node in the same desktop
@@ -62,11 +62,11 @@ alt + {shift,_} + Tab
     bspc node -f {prev,next}.local
 
 # Move node to prev/next desktop
-super + shift + {g, c}
+super + shift + bracket{left,right}
     bspc node -d {prev,next}.local --follow
 
 # Move node to left/right monitor
-super + alt + {g, c}
+super + alt + bracket{left,right}
     bspc node -m {west,east} --follow
 
 #####################
@@ -78,11 +78,11 @@ super + m
     bspc desktop -l next
 
 # focus nth desktop
-super + F{1-9}
+super + {1-9}
     bspc desktop -f $(bspc query -D -m | sed -n {1-9}p)
 
 # focus the next/previous desktop in the current monitor
-super + {g, c}
+super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # create work desktops
@@ -109,7 +109,7 @@ XF86Audio{Raise,Lower}Volume
 XF86AudioMute
     $HOME/scripts/volume_control.sh mute
 
-alt + {t,h,m}
+alt + {t, h, m}
     $HOME/scripts/volume_control.sh {up,down,mute}
 
 # Mic control
@@ -159,7 +159,7 @@ Print + {_,shift, shift+alt}
     $HOME/scripts/screenshot.sh {selection,full,delay}
 
 # connect to vpn
-super + {_, shift} v
+super + {_, shift} c
     nmcli con { up, down } FortiVPNWork
 
 #####################
@@ -171,7 +171,6 @@ super + {_, shift} Return
     {alacritty,$HOME/scripts/alacritty_cwd.sh}
 
 # program launcher
-super + Tab
+super + space
     rofi -show drun
 super + r
-    rofi -show run

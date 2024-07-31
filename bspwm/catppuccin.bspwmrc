@@ -1,6 +1,6 @@
 #! /bin/sh
 
-bspc config border_width        1
+bspc config border_width        0
 bspc config focused_border_color "#F38BA8"
 bspc config window_gap          10
 bspc config pointer_modifier mod4
