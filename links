@@ -16,7 +16,8 @@ bspwm/onetime_launch.sh=.config/bspwm/onetime_launch.sh
 nvim/init.lua=.config/nvim/init.lua
 nvim/lua=.config/nvim/lua
 polybar/polybar_launcher.sh=.config/polybar/polybar_launcher.sh
-rofi/config.rasi=.config/rofi/config.rasi
+#rofi/config.rasi=.config/rofi/config.rasi
+#rofi/official_catppuccin.rasi=.config/rofi/config.rasi
 rofi/powermenu.rasi=.config/rofi/powermenu.rasi
 rofi/runmenu.rasi=.config/rofi/runmenu.rasi
 scripts=scripts
@@ -24,9 +25,18 @@ sxhkd/dvorak=.config/sxhkd/dvorak
 sxhkd/qwerty=.config/sxhkd/qwerty
 
 # Theme specific
-picom/catppuccin.conf=.config/picom/picom.conf
+#picom/catppuccin.conf=.config/picom/picom.conf
 bspwm/catppuccin.bspwmrc=.config/bspwm/bspwmrc
 alacritty/catppuccin.toml=.config/alacritty/alacritty.toml
 dunst/catppuccin.dunstrc=.config/dunst/dunstrc
-polybar/catppuccin.ini=.config/polybar/config.ini
-rofi/catppuccin.rasi=.config/rofi/theme.rasi
+#polybar/catppuccin.ini=.config/polybar/config.ini
+
+#rofi/catppuccin.rasi=.config/rofi/theme.rasi
+#picom/basic.conf=.config/picom/picom.conf
+#polybar/basic.ini=.config/polybar/config.ini
+#i3/basic=.config/i3/config
+picom/i3-transparent.conf=.config/picom/picom.conf
+rofi/main.rasi=.config/rofi/config.rasi
+rofi/i3-basic.rasi=.config/rofi/theme.rasi
+polybar/i3-transparent.ini=.config/polybar/config.ini
+i3/i3-transparent=.config/i3/config

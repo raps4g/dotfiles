@@ -21,7 +21,7 @@ for card in pactl_dict['cards']:
                 and port['type'] in ("Microphone", "HDMI", "Speaker", "Headphones", "Line")):
             output = {}
             if (port_key == current_port):
-                output['name'] = '•' + port['description']
+                output['name'] = ' ' + port['description'] + '\\0icon\\x1ftool_elliptical_selection'
             else:
                 output['name'] = ' ' + port['description']
             output['card'] = card['index']
@@ -38,9 +38,9 @@ print(outputs)
 options = [output['name'] for output in outputs]
 names = '|'.join(options)
 
-echo = Popen(["echo", names], stdout=PIPE)
-rofi = Popen(["rofi", "-no-fixed-num-lines", "-dmenu", "-i", "-sep", "|", "-p",
-              "Select output"], stdin=echo.stdout, stdout=PIPE, text=True)
+echo = Popen(["echo", "-en",names], stdout=PIPE)
+rofi = Popen(["rofi", "-no-fixed-num-lines", "-dmenu", "-i", "-sep", "|", "-p", 
+              "Output: "], stdin=echo.stdout, stdout=PIPE, text=True)
 echo.stdout.close()
 selection = rofi.communicate()[0].replace('\n', '')
 id = options.index(selection)
