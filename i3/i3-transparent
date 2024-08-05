@@ -3,10 +3,6 @@ title_align left
 for_window [class=".*"] title_format "   %title"
 font pango: Font Awesome Solid 6 11
 
-exec --no-startup-id dex-autostart --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -i i3lock -i $HOME/.local/share/backgrounds/mountains.png
-exec --no-startup-id nm-applet
-
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 set $lalt Mod1
@@ -150,7 +146,7 @@ client.background        $base
 
 focus_follows_mouse no
 focus_wrapping no
-exec_always feh --bg-scale $HOME/.local/share/backgrounds/mountains.jpg n
+exec_always feh --bg-scale $HOME/.local/share/backgrounds/mountains.png n
 #exec_always --no-startup-id autotiling
 exec --no-startup-id picom -b --config $HOME/.config/picom/picom.conf
 exec_always killall polybar; sleep 1; polybar -c $HOME/.config/polybar/config.ini
@@ -158,3 +154,10 @@ exec_always xsetroot -cursor_name left_ptr
 exec_always xinput set-prop "MSFT0001:01 06CB:CE2D Touchpad" "libinput Natural Scrolling Enabled" 1
 exec_always xinput set-prop "MSFT0001:01 06CB:CE2D Touchpad" "libinput Tapping Enabled" 1
 exec_always setxkbmap -device $(xinput list --id-only "foostan Corne") -layout latam | setxkbmap -device $(xinput list --id-only "AT Translated Set 2 keyboard") -layout us -variant dvorak-lat
+exec --no-startup-id dex-autostart --autostart --environment i3
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -i i3lock -i $HOME/.local/share/backgrounds/mountains.png
+exec --no-startup-id nm-applet
+exec docker-compose --project-directory /opt/owncloud-docker-server up -d
+exec qbittorrent  
+exec owncloud
+exec flatpak run com.discordapp.Discord --start-minimized
