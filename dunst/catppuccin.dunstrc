@@ -23,9 +23,9 @@
     separator_color = "#3c4549"
     separator_width = 1
     startup_notification = false
-    corner_radius = 10
+    corner_radius = 5
     frame_color = "#F5C2E7"
-    frame_width = 1
+    frame_width = 0
     width = 280
     progress_bar_max_width = 250
     progress_bar_min_width = 250
