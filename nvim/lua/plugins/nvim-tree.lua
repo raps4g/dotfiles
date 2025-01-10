@@ -15,6 +15,7 @@ return {
     -- configure nvim-tree
     nvimtree.setup({
       view = {
+        side = "right",
         width = 30,
         relativenumber = true,
       },
