@@ -1,4 +1,43 @@
 return {
+    {
+        "neovim/nvim-lspconfig",
+        dependencies = {
+            "hrsh7th/cmp-nvim-lsp",
+            { "antosha417/nvim-lsp-file-operations", config = true },
+        },
+        config = function ()
+            local cmp_nvim_lsp = require("cmp_nvim_lsp")
+            local default_capabilities = cmp_nvim_lsp.default_capabilities()
+            require("lspconfig").bashls.setup {
+                capabilities = default_capabilities,
+            }
+            require("lspconfig").pyright.setup {
+                capabilities = default_capabilities,
+            }
+            require("lspconfig").hls.setup {
+                capabilities = default_capabilities,
+            }
+            require("lspconfig").clangd.setup {
+                capabilities = default_capabilities,
+            }
+            require("lspconfig").lua_ls.setup {
+                capabilities = default_capabilities,
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = {
+                                'vim',
+                                'require'
+                            },
+                        }
+                    }
+                },
+            }
+        end,
+    }
+}
+--[[
+return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
@@ -42,7 +81,7 @@ return {
 
             opts.desc = "Show buffer diagnostics"
             keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
-
+cmp
             opts.desc = "Show line diagnostics"
             keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
@@ -112,3 +151,4 @@ return {
 
     end,
 }
+--]]

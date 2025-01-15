@@ -1,6 +1,54 @@
 return {
     {
         "neovim/nvim-lspconfig",
+        opts = {
+            setup = {
+                jdtls = function()
+                    return true
+                end,
+            }
+        }
+    },
+    {
+        "mfussenegger/nvim-jdtls",
+        ft = "java",
+        config = function()
+            local on_attach = function(client, bufnr)
+                require("lazyvim.plugins.lsp.keymaps").on_attach(client, bufnr)
+            end
+
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+            local workspace_dir = vim.fn.stdpath("data") .. "/site/java/workspace-root/" .. project_name
+            local install_path = require("mason-registry").get_package("jdtls"):get_install_path()
+            local config = {
+                cmd = {
+                    install_path .. "/bin/jdtls",
+                    "--jvm-arg=-javaagent:" .. install_path .. "/lombok.jar",
+                    "-data",
+                    workspace_dir,
+                },
+                on_attach = on_attach,
+                capabilities = capabilities,
+                root_dir = vim.fs.dirname(
+                    vim.fs.find({ ".gradlew", ".git", "mvnw", "pom.xml", "build.gradle" }, { upward = true })[1]
+                ),
+            }
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = "java",
+                callback = function()
+                    require("jdtls").start_or_attach(config)
+                end,
+            })
+        end,
+    }
+}
+
+
+--[[
+return {
+    {
+        "neovim/nvim-lspconfig",
         dependencies = { "mfussenegger/nvim-jdtls" },
         opts = {
             setup = {
@@ -59,25 +107,20 @@ return {
 
                             local config = {
                                 cmd = {
-                                    '/usr/lib/jvm/java-17-openjdk-17.0.9.0.9-3.fc38.x86_64/bin/java',
+                                    'java',
                                     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
                                     '-Dosgi.bundles.defaultStartLevel=4',
                                     '-Declipse.product=org.eclipse.jdt.ls.core.product',
                                     '-Dlog.protocol=true',
                                     '-Dlog.level=ALL',
-                                    '-Xmx1g',
+                                    '-Xmx4g',
                                     '--add-modules=ALL-SYSTEM',
-                                    '--add-opens',
-                                    'java.base/java.util=ALL-UNNAMED',
-                                    '--add-opens',
-                                    'java.base/java.lang=ALL-UNNAMED',
-                                    '-javaagent:' .. home .. '/.local/share/nvim/mason/packages/jdtls/lombok.jar',
-                                    '-jar',
-                                    vim.fn.glob(home .. '/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar'),
-                                    '-configuration',
-                                    home .. '/.local/share/nvim/mason/packages/jdtls/config_mac',
-                                    '-data',
-                                    workspace_dir,
+                                    '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+                                    '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+                                    '-javaagent:' .. os.getenv("HOME") .. '.local/share/nvim/mason/packages/jdtls/lombok.jar',
+                                    '-jar', os.getenv("HOME") .. '/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar',
+                                    '-configuration', os.getenv("HOME") .. '/.local/share/nvim/mason/packages/jdtls/config_linux',
+                                    '-data', workspace_dir,
                                 },                                -- The command that starts the language server
                                 -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
 
@@ -109,3 +152,4 @@ return {
         },
     },
 }
+--]]
