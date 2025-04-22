@@ -133,7 +133,7 @@ bindsym $mod+control+n resize grow width 2 px or 2 ppt
 bindsym $mod+$lalt+c reload
 bindsym $mod+$lalt+r restart
 bindsym $mod+$lalt+s exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+$lalt+l exec --no-startup-id sh -c 'i3lock -i $HOME/.local/share/backgrounds/mountains.png'
+bindsym $mod+$lalt+l exec --no-startup-id sh -c 'betterlockscreen -l dim'
 # && systemctl suspend'
 
 ######################################
@@ -198,7 +198,7 @@ exec_always --no-startup-id syncthing serve --no-browser
 exec --no-startup-id nm-applet
 exec --no-startup-id picom -b --config $HOME/.config/picom/picom.conf
 exec --no-startup-id dex-autostart --autostart --environment i3
-exec --no-startup-id xautolock -time 15 -locker "i3lock -i $HOME/.local/share/backgrounds/mountains.png"
+exec --no-startup-id xautolock -time 15 -locker "betterlockscreen -l dim"
 exec --no-startup-id flatpak run com.discordapp.Discord --start-minimized
 
 ######################################
