@@ -8,6 +8,26 @@ return {
         config = function ()
             local cmp_nvim_lsp = require("cmp_nvim_lsp")
             local default_capabilities = cmp_nvim_lsp.default_capabilities()
+            local on_attach = function (buffer)
+                vim.keymap.set(
+                    "n",
+                    "<leader>rn",
+                    "<Cmd>lua vim.lsp.buf.rename()<CR>",
+                    { buffer = buffer, desc = "" }
+                )
+                vim.keymap.set(
+                    "n",
+                    "<leader>ca",
+                    "<Cmd>lua vim.lsp.buf.code_action()<CR>",
+                    { buffer = buffer, desc = "" }
+                )
+                vim.keymap.set(
+                    "n",
+                    "<leader>fd",
+                    "<Cmd>lua vim.lsp.buf.signature_help()<CR>",
+                    { buffer = buffer, desc = "" }
+                )
+            end
             require("lspconfig").bashls.setup {
                 capabilities = default_capabilities,
             }
@@ -19,6 +39,11 @@ return {
             }
             require("lspconfig").clangd.setup {
                 capabilities = default_capabilities,
+                on_attach = on_attach(buffer)
+            }
+            require("lspconfig").gopls.setup {
+                capabilities = default_capabilities,
+                on_attach = on_attach(buffer)
             }
             require("lspconfig").lua_ls.setup {
                 capabilities = default_capabilities,

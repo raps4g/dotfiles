@@ -41,6 +41,7 @@ return {
         "black", -- python formatter
         "pylint", -- python linter
         "eslint_d", -- js linter
+        "gopls"
       },
     })
   end,

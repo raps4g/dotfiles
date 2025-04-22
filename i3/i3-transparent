@@ -1,114 +1,150 @@
-set $mod Mod4
-title_align left
-for_window [class=".*"] title_format "   %title"
-font pango: Font Awesome Solid 6 11
+######################################
+# i3 Configuration File
+######################################
 
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
+# Modifier Keys
+set $mod Mod4
 set $lalt Mod1
 
-# Audio controls
+# Font and Title Configuration
+font pango: Font Awesome Solid 6 11
+title_align left
+for_window [class=".*"] title_format "   %title"
+
+# Refresh i3status
+set $refresh_i3status killall -SIGUSR1 i3status
+
+######################################
+# Audio Controls
+######################################
 bindsym XF86AudioLowerVolume exec $HOME/scripts/volume_control.sh down
 bindsym $lalt+h exec $HOME/scripts/volume_control.sh down
 bindsym XF86AudioRaiseVolume exec $HOME/scripts/volume_control.sh up
 bindsym $lalt+t exec $HOME/scripts/volume_control.sh up
 bindsym XF86AudioMute exec $HOME/scripts/volume_control.sh mute
 bindsym $lalt+m exec $HOME/scripts/volume_control.sh mute
-bindsym XF86AudioMicMute exec $HOME/scripts/mic_control.sh mute 
-bindsym $lalt+Shift+m exec $HOME/scripts/mic_control.sh mute 
+bindsym XF86AudioMicMute exec $HOME/scripts/mic_control.sh mute
+bindsym $lalt+Shift+m exec $HOME/scripts/mic_control.sh mute
 bindsym $mod+o exec python3 $HOME/scripts/rofi_output.py
 
+######################################
+# Brightness Controls
+######################################
 bindsym XF86MonBrightnessDown exec $HOME/scripts/brightness_control.sh down
 bindsym XF86MonBrightnessUp exec $HOME/scripts/brightness_control.sh up
 
+######################################
+# Screenshot Controls
+######################################
 bindsym --release Print exec $HOME/scripts/screenshot.sh selection
 bindsym --release Print+Shift exec $HOME/scripts/screenshot.sh full
 bindsym --release Print+Shift+$lalt exec $HOME/scripts/screenshot.sh delay
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+######################################
+# Floating Window Behavior
+######################################
 floating_modifier $mod
-
-# move tiling windows via drag & drop by left-clicking into the title bar,
-# or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
+######################################
+# Application Launchers
+######################################
 bindsym $mod+Return exec kitty
 bindsym $mod+Shift+Return exec $HOME/scripts/terminal_cwd.sh
 bindsym $mod+Tab exec "rofi -show drun"
 bindsym $mod+space exec "rofi -show drun"
+
+######################################
+# Window Management
+######################################
 bindsym $mod+w kill
 
+# Navigation
 bindsym $mod+d focus left
 bindsym $mod+h focus down
 bindsym $mod+t focus up
 bindsym $mod+n focus right
 
+# Move Windows
 bindsym $mod+Shift+d move left
 bindsym $mod+Shift+h move down
 bindsym $mod+Shift+t move up
 bindsym $mod+Shift+n move right
 
+######################################
+# Workspaces
+######################################
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 
+# Switch Workspaces
 bindsym $mod+f workspace number $ws1
 bindsym $mod+g workspace number $ws2
 bindsym $mod+c workspace number $ws3
 bindsym $mod+r workspace number $ws4
 bindsym $mod+l workspace number $ws5
 
+# Move Windows to Workspaces
 bindsym $mod+Shift+f move container to workspace number $ws1 ; workspace number $ws1
 bindsym $mod+Shift+g move container to workspace number $ws2 ; workspace number $ws2
 bindsym $mod+Shift+c move container to workspace number $ws3 ; workspace number $ws3
 bindsym $mod+Shift+r move container to workspace number $ws4 ; workspace number $ws4
 bindsym $mod+Shift+l move container to workspace number $ws5 ; workspace number $ws5
 
+# Move to Workspaces without Switching
 bindsym $mod+$lalt+Shift+f move container to workspace number $ws1
 bindsym $mod+$lalt+Shift+g move container to workspace number $ws2
 bindsym $mod+$lalt+Shift+c move container to workspace number $ws3
 bindsym $mod+$lalt+Shift+r move container to workspace number $ws4
 bindsym $mod+$lalt+Shift+l move container to workspace number $ws5
 
+######################################
+# Layouts
+######################################
 bindsym $mod+F1 split v
 bindsym $mod+F2 split h
-
 bindsym $mod+F6 fullscreen toggle
 bindsym $mod+F7 floating toggle
-
 bindsym $mod+F3 layout stacking
 bindsym $mod+F4 layout tabbed
 bindsym $mod+F5 layout toggle split
-
 bindsym $mod+1 split v
 bindsym $mod+2 split h
-
 bindsym $mod+6 fullscreen toggle
 bindsym $mod+7 floating toggle
-
 bindsym $mod+3 layout stacking
 bindsym $mod+4 layout tabbed
 bindsym $mod+5 layout toggle split
 
-bindsym $mod+a focus parent
-
-bindsym $mod+$lalt+c reload
-bindsym $mod+$lalt+r restart
-bindsym $mod+$lalt+s exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+$lalt+l exec betterlockscreen -l & systemctl suspend
-#bindsym $mod+$last+l exec i3lock -i $HOME/.local/share/backgrounds/mountains.png & systemctl suspend
-
+######################################
+# Resizing
+######################################
 bindsym $mod+control+d resize shrink width 2 px or 2 ppt
 bindsym $mod+control+t resize grow height 2 px or 2 ppt
 bindsym $mod+control+h resize shrink height 2 px or 2 ppt
 bindsym $mod+control+n resize grow width 2 px or 2 ppt
 
-gaps inner 8 
+######################################
+# Session Management
+######################################
+bindsym $mod+$lalt+c reload
+bindsym $mod+$lalt+r restart
+bindsym $mod+$lalt+s exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+$lalt+l exec --no-startup-id sh -c 'i3lock -i $HOME/.local/share/backgrounds/mountains.png'
+# && systemctl suspend'
+
+######################################
+# Colors and Gaps
+######################################
+gaps inner 8
 gaps top 46
 default_border pixel 0
 default_floating_border pixel 0
+
+# Color Scheme
 set $rosewater #f5e0dc
 set $flamingo #f2cdcd
 set $pink #f5c2e7
@@ -136,30 +172,38 @@ set $base #1e1e2e
 set $mantle #181825
 set $crust #11111b
 
-# target                 title     bg    text   indicator  border
 client.focused           $base     $surface1 $text  $rosewater $blue
 client.focused_inactive  $base     $surface0 $text  $rosewater $surface1
 client.unfocused         $base     $base     $text  $rosewater $surface1
-client.urgent            $peach    $base $peach $overlay0  $peach
-client.placeholder       $base $base $text  $overlay0  $surface1
+client.urgent            $peach    $base     $peach $overlay0  $peach
+client.placeholder       $base     $base     $text  $overlay0  $surface1
 client.background        $base
 
+######################################
+# Focus Behavior
+######################################
 focus_follows_mouse no
 focus_wrapping no
 
-exec_always feh --bg-scale $HOME/.local/share/backgrounds/mountains.png n
+######################################
+# Autostart Applications
+######################################
+exec_always feh --bg-scale $HOME/.local/share/backgrounds/mountains.png
 exec_always killall polybar; sleep 1; polybar -c $HOME/.config/polybar/config.ini
 exec_always xsetroot -cursor_name left_ptr 
 exec_always xinput set-prop "MSFT0001:01 06CB:CE2D Touchpad" "libinput Natural Scrolling Enabled" 1
 exec_always xinput set-prop "MSFT0001:01 06CB:CE2D Touchpad" "libinput Tapping Enabled" 1
-exec_always setxkbmap -device $(xinput list --id-only "foostan Corne") -layout latam | setxkbmap -device $(xinput list --id-only "AT Translated Set 2 keyboard") -layout us -variant dvorak-lat
-
+exec_always setxkbmap us dvorak-intl
+exec_always --no-startup-id syncthing serve --no-browser
+exec --no-startup-id nm-applet
 exec --no-startup-id picom -b --config $HOME/.config/picom/picom.conf
 exec --no-startup-id dex-autostart --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -i i3lock -i $HOME/.local/share/backgrounds/mountains.png
-exec --no-startup-id nm-applet
+exec --no-startup-id xautolock -time 15 -locker "i3lock -i $HOME/.local/share/backgrounds/mountains.png"
 exec --no-startup-id flatpak run com.discordapp.Discord --start-minimized
 
+######################################
+# Window Rules
+######################################
 assign [class="^qBittorrent$"] number 5
 for_window [class="^gnome-calculator$"] floating enable 
 for_window [window_role="pop-up"] floating enable

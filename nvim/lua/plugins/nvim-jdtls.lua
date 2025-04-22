@@ -13,9 +13,6 @@ return {
         "mfussenegger/nvim-jdtls",
         ft = "java",
         config = function()
-            local on_attach = function(client, bufnr)
-                require("lazyvim.plugins.lsp.keymaps").on_attach(client, bufnr)
-            end
 
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
@@ -28,12 +25,37 @@ return {
                     "-data",
                     workspace_dir,
                 },
-                on_attach = on_attach,
                 capabilities = capabilities,
                 root_dir = vim.fs.dirname(
                     vim.fs.find({ ".gradlew", ".git", "mvnw", "pom.xml", "build.gradle" }, { upward = true })[1]
                 ),
             }
+            config.on_attach = function (client, buffer)
+                vim.keymap.set(
+                    "n",
+                    "<leader>rn",
+                    "<Cmd>lua vim.lsp.buf.rename()<CR>",
+                    { buffer = buffer, desc = "" }
+                )
+                vim.keymap.set(
+                    "n",
+                    "<leader>di",
+                    "<Cmd>lua require'jdtls'.organize_imports()<CR>",
+                    { buffer = buffer, desc = "" }
+                )
+                vim.keymap.set(
+                    "v",
+                    "<leader>dm",
+                    "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>",
+                    { buffer = buffer, desc = "" }
+                )
+                vim.keymap.set(
+                    "n",
+                    "<leader>ca",
+                    "<Cmd>lua vim.lsp.buf.code_action()<CR>",
+                    { buffer = buffer, desc = "" }
+                )
+            end
             vim.api.nvim_create_autocmd("FileType", {
                 pattern = "java",
                 callback = function()
