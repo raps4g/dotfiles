@@ -188,7 +188,7 @@ focus_wrapping no
 ######################################
 # Autostart Applications
 ######################################
-exec_always feh --bg-scale $HOME/.local/share/backgrounds/mountains.png
+exec_always feh --bg-center $HOME/.local/share/backgrounds/mountains.png
 exec_always killall polybar; sleep 1; polybar -c $HOME/.config/polybar/config.ini
 exec_always xsetroot -cursor_name left_ptr 
 exec_always xinput set-prop "MSFT0001:01 06CB:CE2D Touchpad" "libinput Natural Scrolling Enabled" 1
@@ -198,7 +198,7 @@ exec_always --no-startup-id syncthing serve --no-browser
 exec --no-startup-id nm-applet
 exec --no-startup-id picom -b --config $HOME/.config/picom/picom.conf
 exec --no-startup-id dex-autostart --autostart --environment i3
-exec --no-startup-id xautolock -time 15 -locker "betterlockscreen -l dim"
+exec --no-startup-id xautolock -time 10 -locker "$HOME/scripts/lockifnotplaying.sh"
 exec --no-startup-id flatpak run com.discordapp.Discord --start-minimized
 
 ######################################
